@@ -22,6 +22,11 @@ class Topic extends Model
 
     }
 
+    public function link($params = [])
+    {
+        return route('topics.show', array_merge([$this->id, $this->slug], $params));
+    }
+
     public function scopeWithOrder($query, $order)
     {
         // 不同的排序，使用不同的数据读取逻辑
@@ -51,8 +56,4 @@ class Topic extends Model
         return $query->orderBy('created_at', 'desc');
     }
 
-    public function link($params = [])
-    {
-        return route('topics.show', array_merge([$this->id, $this->slug], $params));
-    }
 }
