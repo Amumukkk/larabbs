@@ -69,7 +69,7 @@
             <div class="panel panel-default topic-reply">
                 <div class="panel-body">
                     @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
-                    @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                    @include('topics._reply_list', ['replies' => $topic->replies()->recent()->with('user')->get()])
                 </div>
             </div>
         </div>
